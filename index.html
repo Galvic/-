@@ -101,6 +101,8 @@
   .mode small{display:block;color:var(--ink-soft);font-size:12.5px;margin-top:3px;line-height:1.4}
   .mode .best{display:block;font-size:12px;color:var(--gold-deep);font-weight:700;margin-top:5px}
   .mode.wide{grid-column:1 / -1}
+  a.mode{text-decoration:none;color:var(--ink)}
+  a.mode:hover{border-color:var(--gold-deep)}
   .options-row{display:flex;flex-wrap:wrap;gap:10px 22px;margin:18px 0 22px;font-size:14px;color:var(--ink-soft)}
   .options-row label{display:flex;align-items:center;gap:8px;cursor:pointer;user-select:none}
   .options-row input{accent-color:var(--gold-deep);width:17px;height:17px;cursor:pointer}
@@ -258,6 +260,20 @@
         <button class="btn btn-gold" id="btn-start">Начать викторину</button>
       </div>
       <div class="hint">Подсказка: отвечать можно клавишами <kbd>1</kbd>–<kbd>4</kbd>, дальше — <kbd>Enter</kbd></div>
+    </div>
+
+    <div class="card" style="margin-top:16px">
+      <div class="q-count" style="margin-bottom:10px">Ещё викторины на сайте</div>
+      <div class="modes" style="margin:0">
+        <a class="mode wide" href="obshchestvovedenie_politika_quiz.html">
+          <span class="icon" style="background:#126680"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.7 2.6 4 5.6 4 9s-1.3 6.4-4 9c-2.7-2.6-4-5.6-4-9s1.3-6.4 4-9z"/></svg></span>
+          <span><b>Обществоведение · Политика и международные отношения</b><small>Практикум · 10–11 классы · 6 параграфов →</small></span>
+        </a>
+        <a class="mode wide" href="svoya-igra-politika.html">
+          <span class="icon" style="background:#116e59"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 6.2L21 9l-5 4.4 1.5 6.6L12 16.8 6.5 20 8 13.4 3 9l6.6-.8L12 2z"/></svg></span>
+          <span><b>Своя игра · Политическая сфера</b><small>Олимпиадная викторина · кейсы и аргументация повышенной сложности →</small></span>
+        </a>
+      </div>
     </div>
   </section>
 
@@ -547,9 +563,9 @@ function refreshBestLabels(){
     el.textContent = b ? `Рекорд: ${b.correct}/${b.total} · ${b.percent}%` : "";
   });
 }
-document.querySelectorAll(".mode").forEach(btn=>{
+document.querySelectorAll("button.mode").forEach(btn=>{
   btn.addEventListener("click", ()=>{
-    document.querySelectorAll(".mode").forEach(b=>b.classList.remove("selected"));
+    document.querySelectorAll("button.mode").forEach(b=>b.classList.remove("selected"));
     btn.classList.add("selected");
     state.mode = btn.dataset.mode;
   });
